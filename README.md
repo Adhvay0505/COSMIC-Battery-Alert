@@ -51,7 +51,7 @@ Since COSMIC’s built-in battery notifications are incomplete in Fedora 43, thi
 Description=Battery Alert Script
 
 [Service]
-ExecStart=/home/YOURUSERNAME/.local/bin/battery-alert.sh
+ExecStart=/home/YOURUSERNAME/.local/bin/battery_alert.sh
 Restart=always
 
 [Install]
