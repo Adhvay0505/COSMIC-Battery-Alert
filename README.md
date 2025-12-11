@@ -29,4 +29,45 @@ Since COSMIC’s built-in battery notifications are incomplete in Fedora 43, thi
 
 1. **Download the script:**
    ```bash
+   git clone https://github.com/Adhvay0505/COSMIC-Battery-Alert.git
+   cd COSMIC-Battery-Alert
+   chmod +x battery_alert.sh
+   ./battery_alert.sh
+2. **Run Automatically**
+   
+### Option 1: Add to COSMIC Startup Applications
+
+- Open COSMIC Settings → Startup Applications
+
+- Click Add Program and select battery-alert.sh
+
+- The script will start automatically on login
+
+### Option 2: Run as systemd user service
+
+- Create the service file ~/.config/systemd/user/battery-alert.service:
+```bash
+[Unit]
+Description=Battery Alert Script
+
+[Service]
+ExecStart=/home/YOURUSERNAME/.local/bin/battery-alert.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
+```
+
+- Enable and start the service:
+
+```systemctl --user enable --now battery-alert.service```
+
+
+- The script will now run in the background automatically.
+
+## Configuration
+
+- Check interval: Change the sleep 60 in the script to another number of seconds if you want more/less frequent checks.
+
+- Battery thresholds: Adjust the 15 and 5 in the script for low and critical notifications.
    
